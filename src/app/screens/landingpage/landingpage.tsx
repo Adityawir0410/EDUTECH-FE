@@ -4,6 +4,7 @@ import React from "react";
 import Header from "@/app/components/navbar/header";
 import Ussergain from "./ussergain";
 import HowToUse from "./howtouse";
+import FiturUnggulan from "./fiturunggulan";
 
 const LandingPage: React.FC = () => {
   return (
@@ -54,6 +55,7 @@ const LandingPage: React.FC = () => {
       </div>
       <Ussergain/>
       <HowToUse/>
+      <FiturUnggulan/>
     </div>
   );
 };
