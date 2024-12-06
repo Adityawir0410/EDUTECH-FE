@@ -4,10 +4,11 @@ import React, { useState } from "react";
 import Login from "../screens/auth/login";
 import Register from "../screens/auth/register";
 import Home from "../screens/home/home";
+import LandingPage from "../screens/landingpage/landingpage";
 
 const Routes: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [currentPage, setCurrentPage] = useState("login"); // 'login' or 'register'
+  const [currentPage, setCurrentPage] = useState("landing"); // 'landing', 'login', or 'register'
 
   const handleLoginSuccess = () => {
     setIsAuthenticated(true);
@@ -15,7 +16,9 @@ const Routes: React.FC = () => {
 
   return (
     <div>
-      {isAuthenticated ? (
+      {currentPage === "landing" ? (
+        <LandingPage onProceed={() => setCurrentPage("login")} />
+      ) : isAuthenticated ? (
         <Home />
       ) : currentPage === "login" ? (
         <Login

@@ -47,6 +47,9 @@ export default {
           90: "#CC5252",
         },
       },
+      fontFamily: {
+        manrope: ["Manrope", "sans-serif"], // Definisikan font family utama
+      },
     },
   },
   plugins: [],
