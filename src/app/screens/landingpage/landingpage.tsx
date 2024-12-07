@@ -6,6 +6,7 @@ import Ussergain from "./ussergain";
 import HowToUse from "./howtouse";
 import FiturUnggulan from "./fiturunggulan";
 import Pengalaman from "./pengalaman";
+import Pendapat from "./pendapat";
 
 const LandingPage: React.FC = () => {
   return (
@@ -58,6 +59,7 @@ const LandingPage: React.FC = () => {
       <HowToUse/>
       <FiturUnggulan/>
       <Pengalaman/>
+      <Pendapat/>
     </div>
   );
 };

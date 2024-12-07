@@ -17,7 +17,7 @@ const Routes: React.FC = () => {
   return (
     <div>
       {currentPage === "landing" ? (
-        <LandingPage onProceed={() => setCurrentPage("login")} />
+        <LandingPage />
       ) : isAuthenticated ? (
         <Home />
       ) : currentPage === "login" ? (
