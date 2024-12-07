@@ -7,6 +7,7 @@ import HowToUse from "./howtouse";
 import FiturUnggulan from "./fiturunggulan";
 import Pengalaman from "./pengalaman";
 import Pendapat from "./pendapat";
+import Footer from "@/app/components/footer/footer"; // Impor Footer
 
 const LandingPage: React.FC = () => {
   return (
@@ -34,8 +35,6 @@ const LandingPage: React.FC = () => {
 
           {/* Buttons */}
           <div className="mt-2 sm:mt-2 md:mt-2 lg:mt-1 flex flex-row gap-4 items-center justify-center lg:justify-start">
-
-
             <button className="px-6 py-3 bg-primary-50 text-white text-[16px] sm:text-[18px] lg:text-[20px] font-manrope font-semibold rounded-lg shadow-md hover:bg-primary-70 transition w-auto">
               Bergabung
             </button>
@@ -55,11 +54,12 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
       </div>
-      <Ussergain/>
-      <HowToUse/>
-      <FiturUnggulan/>
-      <Pengalaman/>
-      <Pendapat/>
+      <Ussergain />
+      <HowToUse />
+      <FiturUnggulan />
+      <Pengalaman />
+      <Pendapat />
+      <Footer /> {/* Tambahkan Footer di sini */}
     </div>
   );
 };

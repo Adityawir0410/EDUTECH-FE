@@ -8,7 +8,7 @@ const FiturUnggulan: React.FC = () => {
         fontFamily: "Manrope, sans-serif",
       }}
     >
-      <div className="container mx-auto px-4 text-center">
+      <div className="container mx-auto px-4 text-center pb-10">
         {/* Judul Responsif */}
         <h2 className="text-3xl sm:text-4xl md:text-[48px] font-bold mb-8 pt-10">
           Fitur Unggulan Kami
