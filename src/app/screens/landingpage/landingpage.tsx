@@ -7,7 +7,8 @@ import HowToUse from "./howtouse";
 import FiturUnggulan from "./fiturunggulan";
 import Pengalaman from "./pengalaman";
 import Pendapat from "./pendapat";
-import Footer from "@/app/components/footer/footer"; // Impor Footer
+import Footer from "@/app/components/footer/footer";
+
 
 const LandingPage: React.FC = () => {
   return (
@@ -54,12 +55,15 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
       </div>
+      
       <Ussergain />
       <HowToUse />
       <FiturUnggulan />
       <Pengalaman />
       <Pendapat />
-      <Footer /> {/* Tambahkan Footer di sini */}
+
+      {/* Footer Section */}
+      <Footer />
     </div>
   );
 };
