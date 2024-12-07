@@ -5,6 +5,7 @@ import Header from "@/app/components/navbar/header";
 import Ussergain from "./ussergain";
 import HowToUse from "./howtouse";
 import FiturUnggulan from "./fiturunggulan";
+import Pengalaman from "./pengalaman";
 
 const LandingPage: React.FC = () => {
   return (
@@ -56,6 +57,7 @@ const LandingPage: React.FC = () => {
       <Ussergain/>
       <HowToUse/>
       <FiturUnggulan/>
+      <Pengalaman/>
     </div>
   );
 };
