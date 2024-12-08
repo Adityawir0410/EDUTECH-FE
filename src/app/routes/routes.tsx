@@ -8,7 +8,7 @@ import LandingPage from "../screens/landingpage/landingpage";
 
 const Routes: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [currentPage, setCurrentPage] = useState("landing"); // 'landing', 'login', or 'register'
+  const [currentPage, setCurrentPage] = useState("landing");
 
   // const handleLoginSuccess = () => {
   //   setIsAuthenticated(true);
