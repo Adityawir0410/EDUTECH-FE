@@ -15,15 +15,17 @@ const LandingPage: React.FC = () => {
       {/* Header Section */}
       <Header />
 
+      {/* Hero Section */}
       <div className="bg-white w-full py-36 relative font-manrope">
-        {/* Lingkaran Kiri - Mirror dan Besar */}
-      <div className="absolute top-0 left-0 transform scale-x-[-1] z-0">
-        <img
-          src="/images/lingkaransetengahpt2.svg"
-          alt="Lingkaran Kiri"
-          className="w-[100px] h-[100px] sm:w-[200px] sm:h-[200px] md:w-[300px] md:h-[300px]"
-        />
-      </div>
+        {/* Decorative Circle - Left */}
+        <div className="absolute top-0 left-0 transform scale-x-[-1] z-0">
+          <img
+            src="/images/lingkaransetengahpt2.svg"
+            alt="Lingkaran Kiri"
+            className="w-[100px] h-[100px] sm:w-[200px] sm:h-[200px] md:w-[300px] md:h-[300px]"
+          />
+        </div>
+
         <div className="max-w-screen-xl mx-auto px-4 flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between">
           {/* Text Section */}
           <div className="lg:w-1/2 text-center lg:text-left lg:pt-24">
@@ -35,7 +37,8 @@ const LandingPage: React.FC = () => {
               Kapan Saja!
             </h1>
             <p className="text-[18px] sm:text-[20px] lg:text-[22px] font-normal text-gray-700 mt-4">
-              Platform pembelajaran interaktif yang membuat belajar lebih <br className="hidden lg:block" />
+              Platform pembelajaran interaktif yang membuat belajar lebih{" "}
+              <br className="hidden lg:block" />
               menyenangkan dan efektif.
             </p>
             <div className="mt-6 flex justify-center lg:justify-start gap-4">
@@ -50,30 +53,61 @@ const LandingPage: React.FC = () => {
 
           {/* Image Section */}
           <div className="lg:w-1/2 relative mt-10 lg:mt-0">
-            {/* Dualingkaran SVG - Responsive Sizing */}
-            {/* <div className="absolute top-[20px] -right-[100px] sm:-right-[120px] md:-right-[170px] lg:-right-[220px] xl:-right-[270px] z-0 flex justify-end overflow-visible">
-  <img
-    src="/images/dualingkaran.svg"
-    alt="Lingkaran Setengah"
-    className="w-[200px] sm:w-[300px] md:w-[400px] lg:w-[500px] xl:w-[600px] 2xl:w-[700px] max-w-none"
-  />
-</div> */}
-
-
             <img
               src="/images/jempol 1.png"
               alt="Student"
-              className="w-full max-w-[400px] md:max-w-[600px] lg:max-w-[700px] mx-auto lg:relative 
-              transform sm:translate-y-12 lg:translate-y-6 
-              md:translate-y-16 xl:translate-y-6"
+              className="w-full max-w-[400px] md:max-w-[600px] lg:max-w-[700px] mx-auto lg:relative transform sm:translate-y-12 lg:translate-y-6 md:translate-y-16 xl:translate-y-6"
             />
-          </div>  
+
+            {/* Floating Boxes */}
+            <div className="absolute bottom-[20px] left-[90%] transform -translate-x-1/2 bg-white bg-opacity-80 w-[100px] h-[40px] sm:w-[120px] sm:h-[50px] md:w-[140px] md:h-[60px] lg:w-[160px] lg:h-[70px] rounded-lg shadow-lg z-10">
+              <div className="py-2 text-center">
+                <img
+                  src="/images/Frame 2667.png"
+                  alt="Frame 2667"
+                  className="inline-block"
+                />
+              </div>
+            </div>
+
+            <div className="absolute bottom-[90px] left-[15%] transform -translate-x-1/2 bg-white bg-opacity-80 w-[100px] h-[40px] sm:w-[120px] sm:h-[50px] md:w-[140px] md:h-[60px] lg:w-[160px] lg:h-[70px] rounded-lg shadow-lg z-10">
+              <div className="py-2 text-center">
+                <img
+                  src="/images/Frame 2668.png"
+                  alt="Frame 2668"
+                  className="inline-block"
+                />
+              </div>
+            </div>
+            <div className="absolute bottom-[240px] sm:bottom-[300px] md:bottom-[380px] left-[19%] transform -translate-x-1/2 bg-primary-50 w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] md:w-[75px] md:h-[75px] rounded-lg shadow-lg z-10">
+  <div className="flex items-center justify-center h-full">
+    <img
+      src="/images/Group 8749.svg"
+      alt="Frame 2668"
+      className="w-[30px] h-[30px] sm:w-[40px] sm:h-[40px] md:w-[60px] md:h-[60px]"
+    />
+  </div>
+</div>
+
+<div className="absolute bottom-[200px] sm:bottom-[350px] md:bottom-[300px] left-[80%] transform -translate-x-1/2 bg-primary-50 w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] md:w-[75px] md:h-[75px] rounded-lg shadow-lg z-10">
+  <div className="flex items-center justify-center h-full">
+    <img
+      src="/images/Group 8749.svg"
+      alt="Frame 2668"
+      className="w-[30px] h-[30px] sm:w-[40px] sm:h-[40px] md:w-[60px] md:h-[60px]"
+    />
+  </div>
+</div>
+
+
+          </div>
         </div>
-        
-        {/* Kotak Biru - Keep absolute positioning unchanged */}
+
+        {/* Blue Decorative Bar */}
         <div className="absolute inset-x-0 -bottom-[30px] sm:-bottom-[40px] md:-bottom-[20px] lg:-bottom-[52.5px] bg-primary-50 w-full h-[180px]"></div>
       </div>
 
+      {/* Additional Sections */}
       <Ussergain />
       <HowToUse />
       <FiturUnggulan />
