@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import Login from "../screens/auth/login";
-import Register from "../screens/auth/register";
+// import Login from "../screens/auth/login";
+// import Register from "../screens/auth/register";
 import Home from "../screens/home/home";
 import LandingPage from "../screens/landingpage/landingpage";
 
@@ -21,12 +21,14 @@ const Routes: React.FC = () => {
       ) : isAuthenticated ? (
         <Home />
       ) : currentPage === "login" ? (
-        <Login
-          onLoginSuccess={handleLoginSuccess}
-          onRegister={() => setCurrentPage("register")}
-        />
+        // <Login
+        //   onLoginSuccess={handleLoginSuccess}
+        //   onRegister={() => setCurrentPage("register")}
+        // />
+        <div>Login is temporarily disabled</div>
       ) : (
-        <Register onGoToLogin={() => setCurrentPage("login")} />
+        // <Register onGoToLogin={() => setCurrentPage("login")} />
+        <div>Register is temporarily disabled</div>
       )}
     </div>
   );
