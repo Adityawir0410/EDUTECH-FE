@@ -1,16 +1,18 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation"; // Import useRouter
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const router = useRouter(); // Initialize useRouter for navigation
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        menuRef.current && 
+        menuRef.current &&
         buttonRef.current &&
         !menuRef.current.contains(event.target as Node) &&
         !buttonRef.current.contains(event.target as Node)
@@ -27,7 +29,15 @@ const Header: React.FC = () => {
   }, []);
 
   const toggleMenu = () => {
-    setIsMenuOpen(prev => !prev);
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  const navigateToLogin = () => {
+    router.push("/login"); // Navigate to /login
+  };
+
+  const navigateToRegister = () => {
+    router.push("/register"); // Navigate to /register
   };
 
   return (
@@ -59,10 +69,17 @@ const Header: React.FC = () => {
 
           {/* Buttons */}
           <div className="hidden md:flex items-center gap-4 lg:gap-6">
-            <button className="w-[120px] sm:w-[139px] px-4 py-2 bg-primary-50 text-white font-manrope font-semibold rounded-lg hover:bg-primary-70 transition">
+            {/* Login Button */}
+            <button
+              onClick={navigateToLogin} // Use navigateToLogin function
+              className="w-[120px] sm:w-[139px] px-4 py-2 bg-primary-50 text-white font-manrope font-semibold rounded-lg hover:bg-primary-70 transition"
+            >
               Login
             </button>
-            <button className="w-[120px] sm:w-[139px] px-4 py-2 bg-primary-10 text-primary-70 font-manrope font-semibold rounded-lg hover:bg-primary-30 hover:text-primary-90 transition">
+            <button
+              onClick={navigateToRegister} // Navigate to /register
+              className="w-[120px] sm:w-[139px] px-4 py-2 bg-primary-10 text-primary-70 font-manrope font-semibold rounded-lg hover:bg-primary-30 hover:text-primary-90 transition"
+            >
               Daftar
             </button>
           </div>
@@ -94,39 +111,39 @@ const Header: React.FC = () => {
 
         {/* Mobile Dropdown Menu */}
         {isMenuOpen && (
-          <div 
+          <div
             ref={menuRef}
             className="absolute top-full left-0 w-full bg-white shadow-lg z-50 flex flex-col gap-4 py-4 px-6 md:hidden"
           >
-            <a 
-              href="#fitur" 
+            <a
+              href="#fitur"
               onClick={() => setIsMenuOpen(false)}
               className="text-primary-50 hover:underline"
             >
               Fitur
             </a>
-            <a 
-              href="#carakerja" 
+            <a
+              href="#carakerja"
               onClick={() => setIsMenuOpen(false)}
               className="text-primary-50 hover:underline"
             >
               Cara Kerja
             </a>
-            <a 
-              href="#tentang" 
+            <a
+              href="#tentang"
               onClick={() => setIsMenuOpen(false)}
               className="text-primary-50 hover:underline"
             >
               Tentang
             </a>
-            <button 
-              onClick={() => setIsMenuOpen(false)}
+            <button
+              onClick={navigateToLogin} // Navigate to /login
               className="w-full px-4 py-2 bg-primary-50 text-white font-manrope font-semibold rounded-lg hover:bg-primary-70 transition"
             >
               Login
             </button>
-            <button 
-              onClick={() => setIsMenuOpen(false)}
+            <button
+              onClick={navigateToRegister} // Navigate to /register
               className="w-full px-4 py-2 bg-primary-10 text-primary-70 font-manrope font-semibold rounded-lg hover:bg-primary-30 hover:text-primary-90 transition"
             >
               Daftar

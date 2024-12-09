@@ -2,6 +2,7 @@
 
 import React from "react";
 import Header from "@/app/components/navbar/header";
+import Headerdua from "@/app/components/navbar/headerdashboard";
 import Ussergain from "./ussergain";
 import HowToUse from "./howtouse";
 import FiturUnggulan from "./fiturunggulan";
@@ -13,7 +14,8 @@ const LandingPage: React.FC = () => {
   return (
     <div className="relative">
       {/* Header Section */}
-      <Header />
+      {/* <Header /> */}
+      <Headerdua />
 
       {/* Hero Section */}
       <div className="bg-white w-full py-36 relative font-manrope">
