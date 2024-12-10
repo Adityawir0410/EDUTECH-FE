@@ -14,8 +14,8 @@ const LandingPage: React.FC = () => {
   return (
     <div className="relative">
       {/* Header Section */}
-      {/* <Header /> */}
-      <Headerdua />
+      <Header />
+      {/* <Headerdua /> */}
 
       {/* Hero Section */}
       <div className="bg-white w-full py-36 relative font-manrope">

@@ -1,14 +1,56 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation"; // Ganti dengan next/navigation
 
 const Login: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter(); // Tetap gunakan useRouter di sini
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+  
+    try {
+      const response = await fetch("https://edutech-be.up.railway.app/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Login failed");
+      }
+  
+      const data = await response.json();
+      console.log("Login successful", data);
+  
+      // Simpan token di cookies
+      document.cookie = `authToken=${data.token}; path=/;`;
+  
+      // Redirect ke dashboard
+      router.push("/dashboard");
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+
   return (
     <div className="flex min-h-screen bg-white">
       {/* Left Section - Image */}
       <div className="relative w-1/2 hidden md:block">
         <img
-          src="/images/gambarlogin.svg" // Pastikan path file SVG benar
+          src="/images/gambarlogin.svg"
           alt="Library"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -24,7 +66,7 @@ const Login: React.FC = () => {
           </p>
 
           {/* Login Form */}
-          <form className="mt-6 space-y-4">
+          <form className="mt-6 space-y-4" onSubmit={handleLogin}>
             {/* Email Input */}
             <div>
               <label
@@ -38,7 +80,10 @@ const Login: React.FC = () => {
                 id="email"
                 name="email"
                 placeholder="Your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="mt-1 block w-full px-3 py-2 h-[44px] border border-gray-300 rounded-lg text-[18px] font-manrope text-black focus:ring-primary-50 focus:border-primary-50 outline-none"
+                required
               />
             </div>
 
@@ -50,65 +95,28 @@ const Login: React.FC = () => {
               >
                 Password
               </label>
-              <div className="relative">
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Your password"
-                  className="mt-1 block w-full px-3 py-2 h-[44px] border border-gray-300 rounded-lg text-[18px] font-manrope text-black focus:ring-primary-50 focus:border-primary-50 outline-none"
-                />
-                <button
-                  type="button"
-                  className="absolute inset-y-0 right-3 flex items-center text-gray-400"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M15 12h.01M12 12h.01M9 12h.01M4 6h16M4 18h16"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            {/* Divider */}
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="bg-white px-2 text-gray-500">or</span>
-              </div>
-            </div>
-
-            {/* Google Login */}
-            <button
-              type="button"
-              className="w-full flex justify-center items-center py-2 px-4 h-[44px] border border-gray-300 rounded-lg shadow-sm bg-white text-[18px] font-normal font-manrope text-gray-700 hover:bg-gray-50"
-            >
-              <img
-                src="/images/google logo.svg" // Pastikan path file Google logo benar
-                alt="Google Icon"
-                className="h-5 w-5 mr-2"
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="mt-1 block w-full px-3 py-2 h-[44px] border border-gray-300 rounded-lg text-[18px] font-manrope text-black focus:ring-primary-50 focus:border-primary-50 outline-none"
+                required
               />
-              Sign in with Google
-            </button>
+            </div>
+
+            {/* Error Message */}
+            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
 
             {/* Submit Button */}
             <button
               type="submit"
               className="w-full h-[44px] py-2 px-4 bg-primary-50 text-white text-[18px] font-semibold rounded-lg shadow-md hover:bg-primary-60 focus:outline-none font-manrope"
+              disabled={loading}
             >
-              Masuk
+              {loading ? "Logging in..." : "Masuk"}
             </button>
           </form>
 
