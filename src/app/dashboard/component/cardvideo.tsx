@@ -131,6 +131,17 @@ const ClassList: React.FC = () => {
       cardImage: "/images/bannervideo.png",
       subjectColor: "#22C55E",
     },
+    {
+      subject: "Biologi",
+      title: "Exploring the wonders of Human Anatomy",
+      time: "Friday, 9:00 AM - 11:00 AM",
+      teacherName: "Dr. Emily White",
+      teacherRole: "Lecturer",
+      teacherImage: "/images/profilvideo.png",
+      cardImage: "/images/bannervideo.png",
+      subjectColor: "#22C55E",
+    },
+    
   ];
 
   return (

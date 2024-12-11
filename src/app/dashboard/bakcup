@@ -1,29 +1,74 @@
-"use client";
+// "use client";
 
-import React from "react";
-import Headerdua from "@/app/dashboard/navbar/headerdashboard";
+// import React from "react";
+// import Headerdua from "@/app/dashboard/navbar/headerdashboard"; // Impor Header sesuai path
+// import CardVideo from "@/app/dashboard/component/cardvideo"; // Impor CardVideo
+// import UpcomingTask from "@/app/dashboard/component/upcomingtask"; // Impor UpcomingTask
+// import Lesson from "@/app/dashboard/component/leason"; // Impor Lesson
+// import GroupChat from "@/app/dashboard/component/groupchat";
 
-const LoginSuccess: React.FC = () => {
-  return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
-      {/* Decorative SVG with responsive adjustments */}
-      <div className="p-6 sm:p-10 md:p-16">
-        <img
-          src="/images/banner.svg"
-          alt="Banner"
-          className="w-full max-w-[90%] md:max-w-[800px] sm:max-w-[600px] h-auto mt-8 ml-8 sm:mt-12 sm:ml-12 md:mt-16 md:ml-16 sm:mr-12 md:mr-16"
-        />
-      </div>
+// const LoginSuccess: React.FC = () => {
+//   return (
+//     <div className="flex flex-col min-h-screen bg-white">
+//       {/* Header */}
+//       <Headerdua />
 
-      {/* Header */}
-      <Headerdua />
+//       {/* Dashboard Content */}
+//       <div className="flex-grow p-6 pt-8 sm:pt-6 md:pt-16 sm:p-12 md:p-24 md:pr-12 bg-white m-6 rounded-lg">
+//         {/* Row Container */}
+//         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
+//           {/* Left Column (3/4 width) */}
+//           <div className="col-span-3 flex flex-col items-start">
+//             <img
+//               src="/images/banner.svg"
+//               alt="Banner"
+//               className="w-full h-full object-cover rounded-lg"
+//             />
 
-      {/* Dashboard Content */}
-      <div className="flex-grow p-4">
-        {/* Add your dashboard content here */}
-      </div>
-    </div>
-  );
-};
+//             {/* Title Above Search Bar */}
+//             <h2
+//               className="font-manrope font-semibold text-lg sm:text-xl md:text-2xl mt-4 sm:mt-6 text-black"
+//               style={{ fontSize: "calc(16px + 1vw)" }}
+//             >
+//               Kelas Anda
+//             </h2>
 
-export default LoginSuccess;
+//             {/* Search Bar */}
+//             <div className="relative mt-3 sm:mt-4 w-full">
+//               <img
+//                 src="/images/search.svg"
+//                 alt="Search Icon"
+//                 className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 sm:w-6 h-5 sm:h-6 text-gray-500"
+//               />
+//               <input
+//                 type="text"
+//                 placeholder="Cari Sekarang..."
+//                 className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2 sm:py-3 text-sm sm:text-base text-black border-2 border-blue-500 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+//               />
+//             </div>
+
+//             {/* Card Video Section */}
+//             <div className="mt-6 w-full">
+//               <CardVideo />
+//             </div>
+//           </div>
+
+//           {/* Right Column (1/4 width) */}
+//           <div className="col-span-1 bg-gray-100">
+//             {/* Upcoming Task Section */}
+//               <UpcomingTask />
+
+//             {/* Lesson Section */}
+//               <Lesson />
+
+//             {/* Lesson Section */}
+//             <GroupChat />
+//             {/* Right Column Content */}
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default LoginSuccess;

@@ -1,11 +1,17 @@
 "use client";
 
 import React from "react";
+import CardVideo from "@/app/dashboard/component/cardvideo";
 
 const ClassesPage: React.FC = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-gray-800">Classes</h1>
+    <div className="flex flex-col min-h-screen p-6">
+
+      {/* Container untuk CardVideo */}
+      <div className="flex flex-wrap gap-6">
+        {/* Contoh beberapa CardVideo */}
+        <CardVideo />
+      </div>
     </div>
   );
 };
