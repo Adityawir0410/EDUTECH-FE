@@ -33,12 +33,12 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   };
 
   const menuItems = [
-    { name: "Dashboard", page: "dashboard", icon: "/images/dashboard.svg" },
+    { name: "Dashboard", page: "dashboard", icon: "/images/vuesax.svg" },
     { name: "Classes", page: "classes", icon: "/images/classes.svg" },
     { name: "Calendar", page: "calendar", icon: "/images/calender.svg" },
-    { name: "Group Chat", page: "groupchat", icon: "/images/groupchat.svg" },
+    // { name: "Group Chat", page: "groupchat", icon: "/images/groupchat.svg" },
     { name: "Task", page: "task", icon: "/images/task.svg" },
-    { name: "Notes", page: "notes", icon: "/images/notes.svg" },
+    // { name: "Notes", page: "notes", icon: "/images/notes.svg" },
     { name: "Settings", page: "settings", icon: "/images/settings.svg" },
     { name: "Trash", page: "trash", icon: "/images/trash.svg" },
   ];

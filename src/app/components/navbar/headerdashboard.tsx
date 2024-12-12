@@ -34,7 +34,7 @@ const Header: React.FC = () => {
   };
 
   const menuItems = [
-    { name: "Dashboard", icon: "/images/dashboard.svg" },
+    { name: "Dashboard", icon: "/images/vuesax.svg" },
     { name: "Classes", icon: "/images/classes.svg" },
     { name: "Calendar", icon: "/images/calender.svg" },
     { name: "Group Chat", icon: "/images/groupchat.svg" },

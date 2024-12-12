@@ -5,9 +5,10 @@ import Headerdua from "@/app/dashboard/navbar/headerdashboard";
 import CardVideo from "@/app/dashboard/component/cardvideo";
 import UpcomingTask from "@/app/dashboard/component/upcomingtask";
 import Lesson from "@/app/dashboard/component/leason";
-import GroupChat from "@/app/dashboard/component/groupchat";
-// Impor halaman Classes
+// Impor halaman Classes, Calendar, dan Settings
 import ClassesPage from "@/app/dashboard/classes/page";
+import CalendarPage from "@/app/dashboard/calendar/page";
+import SettingsPage from "@/app/dashboard/settingpage/page";
 
 const LoginSuccess: React.FC = () => {
   const userName = "Adit";
@@ -79,7 +80,7 @@ const LoginSuccess: React.FC = () => {
             <div className="col-span-1">
               <UpcomingTask />
               <Lesson />
-              <GroupChat />
+              {/* <GroupChat /> */}
             </div>
           </div>
         )}
@@ -88,6 +89,20 @@ const LoginSuccess: React.FC = () => {
           <div>
             {/* Tampilkan halaman Classes */}
             <ClassesPage />
+          </div>
+        )}
+
+        {activePage === "calendar" && (
+          <div>
+            {/* Tampilkan halaman Kalender */}
+            <CalendarPage />
+          </div>
+        )}
+
+        {activePage === "settings" && (
+          <div>
+            {/* Tampilkan halaman Settings */}
+            <SettingsPage />
           </div>
         )}
       </div>

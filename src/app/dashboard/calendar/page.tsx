@@ -1,19 +1,12 @@
-"use client";
-
 import React from "react";
-import CardVideo from "@/app/dashboard/component/cardvideo";
+import Calendar from "@/app/dashboard/component/Calendar";
 
-const ClassesPage: React.FC = () => {
+const CalendarPage: React.FC = () => {
   return (
-    <div className="flex flex-col min-h-screen p-6">
-
-      {/* Container untuk CardVideo */}
-      <div className="flex flex-wrap gap-6">
-        {/* Contoh beberapa CardVideo */}
-        <CardVideo />
-      </div>
+    <div className="p-4">
+      <Calendar />
     </div>
   );
 };
 
-export default ClassesPage;
+export default CalendarPage;
