@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 // Interface for class data
 interface ClassCardProps {
@@ -12,6 +12,7 @@ interface ClassCardProps {
   teacherImage: string;
   cardImage: string;
   subjectColor: string;
+  onDelete: () => void; // Function to handle delete
 }
 
 const ClassCard: React.FC<ClassCardProps> = ({
@@ -23,9 +24,12 @@ const ClassCard: React.FC<ClassCardProps> = ({
   teacherImage,
   cardImage,
   subjectColor,
+  onDelete,
 }) => {
+  const [showDropdown, setShowDropdown] = useState(false);
+
   return (
-    <div className="w-[280px] h-[350px] bg-white shadow-lg rounded-lg overflow-hidden">
+    <div className="w-[280px] h-[350px] bg-white shadow-lg rounded-lg overflow-hidden relative">
       {/* Image Section */}
       <div className="relative h-[50%]">
         <img
@@ -34,7 +38,10 @@ const ClassCard: React.FC<ClassCardProps> = ({
           className="w-full h-full object-cover"
         />
         {/* More Options Icon */}
-        <div className="absolute top-3 right-3 bg-gray-900 bg-opacity-50 rounded-full p-2 cursor-pointer">
+        <div
+          className="absolute top-3 right-3 bg-gray-900 bg-opacity-50 rounded-full p-2 cursor-pointer"
+          onClick={() => setShowDropdown((prev) => !prev)}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -50,6 +57,18 @@ const ClassCard: React.FC<ClassCardProps> = ({
             />
           </svg>
         </div>
+
+        {/* Dropdown */}
+        {showDropdown && (
+          <div className="absolute top-12 right-3 bg-white shadow-lg border border-gray-200 rounded-lg z-10">
+            <button
+              onClick={onDelete}
+              className="text-red-600 text-sm font-semibold px-4 py-2 hover:bg-gray-100 w-full text-left"
+            >
+              Delete
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Content Section */}
@@ -89,8 +108,7 @@ const ClassCard: React.FC<ClassCardProps> = ({
 
 // Main Component to Display Multiple Cards
 const ClassList: React.FC = () => {
-  // Sample Data
-  const classes = [
+  const [classes, setClasses] = useState([
     {
       subject: "Matematika",
       title: "Beginner’s Guide to becoming a professional frontend developer",
@@ -131,23 +149,22 @@ const ClassList: React.FC = () => {
       cardImage: "/images/bannervideo.png",
       subjectColor: "#22C55E",
     },
-    {
-      subject: "Biologi",
-      title: "Exploring the wonders of Human Anatomy",
-      time: "Friday, 9:00 AM - 11:00 AM",
-      teacherName: "Dr. Emily White",
-      teacherRole: "Lecturer",
-      teacherImage: "/images/profilvideo.png",
-      cardImage: "/images/bannervideo.png",
-      subjectColor: "#22C55E",
-    },
-    
-  ];
+  ]);
+
+  // Delete card handler
+  const deleteCard = (index: number) => {
+    const updatedClasses = classes.filter((_, idx) => idx !== index);
+    setClasses(updatedClasses);
+  };
 
   return (
     <div className="flex flex-wrap gap-6 justify-center">
       {classes.map((classData, index) => (
-        <ClassCard key={index} {...classData} />
+        <ClassCard
+          key={index}
+          {...classData}
+          onDelete={() => deleteCard(index)}
+        />
       ))}
     </div>
   );
