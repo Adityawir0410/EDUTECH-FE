@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 // Interface for class data
-interface ClassCardProps {
+interface ClassData {
+  id?: string;
   subject: string;
   title: string;
   time: string;
@@ -12,10 +14,15 @@ interface ClassCardProps {
   teacherImage: string;
   cardImage: string;
   subjectColor: string;
-  onDelete: () => void; // Function to handle delete
+}
+
+interface ClassCardProps extends ClassData {
+  index: number;
+  onDelete: () => void;
 }
 
 const ClassCard: React.FC<ClassCardProps> = ({
+  id,
   subject,
   title,
   time,
@@ -24,12 +31,33 @@ const ClassCard: React.FC<ClassCardProps> = ({
   teacherImage,
   cardImage,
   subjectColor,
+  index,
   onDelete,
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const router = useRouter();
+
+  const handleCardClick = () => {
+    // Navigate to detail page, passing the index as a parameter
+    router.push(`/dashboard/detailclasses?index=${index}`);
+  };
+
+  const handleMoreOptionsClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent card click when clicking more options
+    setShowDropdown((prev) => !prev);
+  };
+
+  const handleDeleteClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent card click when deleting
+    onDelete();
+    setShowDropdown(false);
+  };
 
   return (
-    <div className="w-[280px] h-[350px] bg-white shadow-lg rounded-lg overflow-hidden relative">
+    <div 
+      className="w-[280px] h-[350px] bg-white shadow-lg rounded-lg overflow-hidden relative cursor-pointer hover:shadow-xl transition-shadow"
+      onClick={handleCardClick}
+    >
       {/* Image Section */}
       <div className="relative h-[50%]">
         <img
@@ -40,7 +68,7 @@ const ClassCard: React.FC<ClassCardProps> = ({
         {/* More Options Icon */}
         <div
           className="absolute top-3 right-3 bg-gray-900 bg-opacity-50 rounded-full p-2 cursor-pointer"
-          onClick={() => setShowDropdown((prev) => !prev)}
+          onClick={handleMoreOptionsClick}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -60,9 +88,12 @@ const ClassCard: React.FC<ClassCardProps> = ({
 
         {/* Dropdown */}
         {showDropdown && (
-          <div className="absolute top-12 right-3 bg-white shadow-lg border border-gray-200 rounded-lg z-10">
+          <div 
+            className="absolute top-12 right-3 bg-white shadow-lg border border-gray-200 rounded-lg z-10"
+            onClick={(e) => e.stopPropagation()} // Prevent dropdown from closing when clicking inside
+          >
             <button
-              onClick={onDelete}
+              onClick={handleDeleteClick}
               className="text-red-600 text-sm font-semibold px-4 py-2 hover:bg-gray-100 w-full text-left"
             >
               Delete
@@ -108,10 +139,10 @@ const ClassCard: React.FC<ClassCardProps> = ({
 
 // Main Component to Display Multiple Cards
 const ClassList: React.FC = () => {
-  const [classes, setClasses] = useState([
+  const [classes, setClasses] = useState<ClassData[]>([
     {
       subject: "Matematika",
-      title: "Beginner’s Guide to becoming a professional frontend developer",
+      title: "Beginner's Guide to becoming a professional frontend developer",
       time: "Monday, 10:00 AM - 12:00 PM",
       teacherName: "Prashant Kumar Singh",
       teacherRole: "Teacher",
@@ -163,6 +194,7 @@ const ClassList: React.FC = () => {
         <ClassCard
           key={index}
           {...classData}
+          index={index}
           onDelete={() => deleteCard(index)}
         />
       ))}
