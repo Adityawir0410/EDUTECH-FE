@@ -409,7 +409,7 @@ const DetailClassesPage: React.FC = () => {
               </div>
 
               {/* Right Column */}
-              <div className="col-span-9 bg-gray-50 rounded-lg p-6 shadow-md">
+              <div className="col-span-9 p-6">
                 {selectedTopic ? (
                   classDetails.topicDropdowns[selectedTopic] ? (
                     <Dropdown
